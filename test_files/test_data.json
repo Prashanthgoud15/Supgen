@@ -1,0 +1,24 @@
+{
+    "company": "SupportGenie Inc.",
+    "products": [
+        {
+            "id": "PWD-001",
+            "name": "Premium Widget",
+            "price": 99.99,
+            "category": "Electronics",
+            "in_stock": true
+        },
+        {
+            "id": "PWD-002",
+            "name": "Standard Widget",
+            "price": 49.99,
+            "category": "Electronics",
+            "in_stock": true
+        }
+    ],
+    "support": {
+        "email": "support@supportgenie.com",
+        "phone": "1-800-SUPPORT",
+        "hours": "Mon-Fri 9AM-5PM EST"
+    }
+}

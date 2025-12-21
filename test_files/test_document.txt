@@ -1,0 +1,13 @@
+This is a test text file for SupportGenie.
+
+Product Information:
+- Product Name: Premium Widget
+- Product ID: PWD-12345
+- Price: $99.99
+- Stock: 50 units
+
+Customer Support:
+For any questions, please contact support@example.com or call 1-800-SUPPORT.
+
+Return Policy:
+30-day money-back guarantee on all products.

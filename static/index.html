@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupportGenie - AI-Powered Customer Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/translations.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl">🤖</div>
+                    <span class="text-2xl font-bold">SupportGenie</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div id="languageSelectorContainer"></div>
+                    <a href="/admin"
+                        class="px-6 py-2 bg-white text-purple-600 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        Admin Dashboard
+                    </a>
+                    <a href="/support"
+                        class="px-6 py-2 bg-purple-800 text-white rounded-lg font-semibold hover:bg-purple-900 transition">
+                        Get Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-24 fade-in">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-6xl mb-6">🤖✨</div>
+            <h1 class="text-6xl font-bold mb-6">Transform Your Customer Support with AI</h1>
+            <p class="text-2xl mb-8 text-purple-100 max-w-3xl mx-auto">
+                24/7 automated support powered by multi-agent AI system. Built for MSMEs who want enterprise-grade
+                support.
+            </p>
+
+            <div class="flex justify-center space-x-6 mt-12">
+                <a href="/admin">
+                    <button class="btn-primary text-white px-10 py-4 rounded-xl font-bold text-lg shadow-2xl">
+                        🎛️ Admin Dashboard
+                    </button>
+                </a>
+                <a href="/support">
+                    <button class="btn-secondary text-white px-10 py-4 rounded-xl font-bold text-lg shadow-2xl">
+                        💬 Get Support Now
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tagline Section -->
+    <section class="bg-white py-8 shadow-md">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-xl text-gray-700">
+                <span class="font-semibold text-purple-600">Autonomous AI Customer Support</span> for MSMEs
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Why SupportGenie?</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Three powerful AI agents working together for you</p>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="text-5xl mb-4">🤖</div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Multi-Agent Intelligence</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Three specialized AI agents: Document processing, conversation handling, and autonomous action
+                        execution. Seamlessly coordinated for optimal support.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Instant Responses</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        AI-powered answers from your knowledge base in under 3 seconds. No more waiting hours for
+                        support tickets. Available 24/7.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Full Visibility</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Complete analytics and conversation tracking. Monitor performance, satisfaction ratings, and
+                        identify improvement areas in real-time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">How It Works</h2>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-8">
+                    <!-- Step 1 -->
+                    <div class="flex items-start space-x-6 fade-in">
+                        <div
+                            class="step-number flex-shrink-0 w-16 h-16 rounded-full text-white flex items-center justify-center text-2xl font-bold">
+                            1
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800">📄 Upload Documents</h3>
+                            <p class="text-gray-600 text-lg">
+                                Upload your product manuals, FAQs, and support documents. Our Document Agent processes
+                                and structures them automatically.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex items-start space-x-6 fade-in" style="animation-delay: 0.2s">
+                        <div
+                            class="step-number flex-shrink-0 w-16 h-16 rounded-full text-white flex items-center justify-center text-2xl font-bold">
+                            2
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800">🧠 AI Learns</h3>
+                            <p class="text-gray-600 text-lg">
+                                Our AI analyzes your documents using Google Gemini, extracting key information,
+                                troubleshooting steps, and policies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex items-start space-x-6 fade-in" style="animation-delay: 0.4s">
+                        <div
+                            class="step-number flex-shrink-0 w-16 h-16 rounded-full text-white flex items-center justify-center text-2xl font-bold">
+                            3
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800">💬 Customers Ask</h3>
+                            <p class="text-gray-600 text-lg">
+                                Your customers interact with the friendly AI chat interface, asking questions in natural
+                                language.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex items-start space-x-6 fade-in" style="animation-delay: 0.6s">
+                        <div
+                            class="step-number flex-shrink-0 w-16 h-16 rounded-full text-white flex items-center justify-center text-2xl font-bold">
+                            4
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800">🎯 AI Responds & Acts</h3>
+                            <p class="text-gray-600 text-lg">
+                                The Chat Agent provides accurate answers and the Action Agent handles tasks like
+                                creating tickets, checking orders, or processing returns.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Support?</h2>
+            <p class="text-xl mb-10 text-purple-100">
+                Join MSMEs who are already providing world-class support with AI
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="/admin">
+                    <button
+                        class="bg-white text-purple-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-2xl">
+                        Start as Admin
+                    </button>
+                </a>
+                <a href="/support">
+                    <button
+                        class="bg-purple-800 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition shadow-2xl">
+                        Try Customer Chat
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-4xl mb-4">🤖</div>
+            <p class="text-lg mb-2">
+                <span class="font-bold text-white">SupportGenie</span> - AI-Powered Customer Support
+            </p>
+            <p class="text-sm text-gray-400">
+                Built with Google Gemini AI | Powered by Multi-Agent Architecture
+            </p>
+            <div class="mt-6 text-sm text-gray-500">
+                © 2024 SupportGenie. Built for Hackathon.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize language selector when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof translationManager !== 'undefined') {
+                translationManager.createLanguageSelector('languageSelectorContainer');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

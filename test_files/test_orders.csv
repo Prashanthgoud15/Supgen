@@ -1,0 +1,5 @@
+Order ID,Customer Name,Product,Quantity,Price,Status
+ORD-001,John Doe,Widget A,2,$50.00,Shipped
+ORD-002,Jane Smith,Widget B,1,$75.00,Processing
+ORD-003,Bob Johnson,Widget C,3,$120.00,Delivered
+ORD-004,Alice Brown,Widget A,1,$25.00,Pending

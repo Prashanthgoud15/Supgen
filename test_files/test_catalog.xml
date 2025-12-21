@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <product id="PWD-001">
+    <name>Premium Widget</name>
+    <price currency="USD">99.99</price>
+    <category>Electronics</category>
+    <stock>50</stock>
+    <description>High-quality premium widget with advanced features</description>
+  </product>
+  <product id="PWD-002">
+    <name>Standard Widget</name>
+    <price currency="USD">49.99</price>
+    <category>Electronics</category>
+    <stock>100</stock>
+    <description>Reliable standard widget for everyday use</description>
+  </product>
+</catalog>

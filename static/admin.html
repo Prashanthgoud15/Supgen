@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SupportGenie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/translations.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .stat-card {
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation -->
+    <nav class="bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="text-2xl">🤖</div>
+                    <span class="text-xl font-bold">SupportGenie Admin</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div id="languageSelectorContainer"></div>
+                    <button id="uploadBtn"
+                        class="px-6 py-2 bg-white text-purple-600 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        📄 Upload Document
+                    </button>
+                    <a href="/" class="px-4 py-2 bg-purple-700 rounded-lg hover:bg-purple-900 transition">
+                        🏠 Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-12 gap-6">
+
+            <!-- Left Column - Analytics & Documents -->
+            <div class="col-span-12 lg:col-span-4 space-y-6">
+
+                <!-- Analytics Cards -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800">📊 Analytics</h2>
+                    <div class="space-y-4">
+                        <div class="stat-card bg-white rounded-xl p-6 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Today's Conversations</p>
+                                    <p id="convToday" class="text-3xl font-bold text-purple-600">0</p>
+                                </div>
+                                <div class="text-4xl">💬</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card bg-white rounded-xl p-6 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Documents</p>
+                                    <p id="totalDocs" class="text-3xl font-bold text-blue-600">0</p>
+                                </div>
+                                <div class="text-4xl">📚</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card bg-white rounded-xl p-6 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Active Chats</p>
+                                    <p id="activeChats" class="text-3xl font-bold text-green-600">0</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-2">🟢</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card bg-white rounded-xl p-6 shadow-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500 text-sm">Avg Response Time</p>
+                                    <p id="avgResponse" class="text-3xl font-bold text-orange-600">0s</p>
+                                </div>
+                                <div class="text-4xl">⚡</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents List -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800">📚 Knowledge Base</h2>
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <div id="documentsList" class="space-y-3 max-h-96 overflow-y-auto">
+                            <!-- Documents will be loaded here -->
+                        </div>
+                        <div id="noDocuments" class="text-center text-gray-400 py-8 hidden">
+                            No documents uploaded yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Conversations -->
+            <div class="col-span-12 lg:col-span-8">
+                <div class="bg-white rounded-xl shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl font-bold text-gray-800">💬 Customer Conversations</h2>
+                            <div class="flex space-x-2">
+                                <button id="filterAll"
+                                    class="filter-btn px-4 py-2 rounded-lg bg-purple-600 text-white font-semibold">All</button>
+                                <button id="filterActive"
+                                    class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700">Active</button>
+                                <button id="filterResolved"
+                                    class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700">Resolved</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <div id="conversationsList" class="space-y-4 max-h-[600px] overflow-y-auto">
+                            <!-- Conversations will be loaded here -->
+                        </div>
+                        <div id="noConversations" class="text-center text-gray-400 py-12 hidden">
+                            No conversations yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-lg w-full mx-4">
+            <h3 class="text-2xl font-bold mb-6">📄 Upload Document</h3>
+
+            <div id="dropZone"
+                class="border-4 border-dashed border-gray-300 rounded-xl p-12 text-center cursor-pointer hover:border-purple-500 transition">
+                <div class="text-6xl mb-4">📄</div>
+                <p class="text-lg font-semibold text-gray-700 mb-2">Drop the file here or click to browse</p>
+                <p class="text-sm text-gray-500">Maximum file size: 10MB</p>
+                <input type="file" id="fileInput" accept=".pdf,.txt,.docx,.xlsx,.xls,.csv,.json,.md,.xml"
+                    class="hidden">
+            </div>
+
+            <div id="uploadProgress" class="hidden mt-6">
+                <div class="bg-gray-200 rounded-full h-3 overflow-hidden">
+                    <div id="progressBar" class="bg-purple-600 h-full transition-all duration-300" style="width: 0%">
+                    </div>
+                </div>
+                <p id="uploadStatus" class="text-center text-sm text-gray-600 mt-2">Uploading...</p>
+            </div>
+
+            <div id="uploadSuccess" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">✅</span>
+                    <span class="text-green-700 font-semibold">Document uploaded successfully!</span>
+                </div>
+            </div>
+
+            <div class="flex justify-end space-x-3 mt-6">
+                <button id="cancelUpload"
+                    class="px-6 py-2 bg-gray-200 rounded-lg font-semibold hover:bg-gray-300 transition">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conversation Detail Modal -->
+    <div id="conversationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl max-w-3xl w-full mx-4 max-h-[90vh] flex flex-col">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold" id="modalCustomerName">Customer Name</h3>
+                        <p class="text-gray-500" id="modalCustomerEmail">email@example.com</p>
+                    </div>
+                    <button id="closeConversation" class="text-gray-400 hover:text-gray-600 text-3xl">×</button>
+                </div>
+            </div>
+
+            <div id="conversationMessages" class="flex-1 overflow-y-auto p-6 space-y-4">
+                <!-- Messages will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>
